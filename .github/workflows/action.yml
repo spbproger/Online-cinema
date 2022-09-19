@@ -12,32 +12,32 @@ jobs:
         run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: docker push
         run: docker push standocker29/flask-app:$GITHUB_REF_NAME-$GITHUB_RUN_ID
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build_and_push
-    steps:
-      - name: clone code
-        uses: actions/checkout@v2
-      - name: render config
-        run: |
-          mkdir home_26_work_docker2
-          cat docker-compose-ci.yaml | envsubst > home_26_work_docker2/docker-compose.yaml
-      - name: copy files to server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          source: "home_26_work_docker2/docker-compose.yaml"
-          target: "home_26_work_docker2"
-          strip_components: 1
-      - name: deploy app
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: |
-            cd home_26_work_docker2
-            echo ${{ secrets.PASSWORD }} | sudo -S docker-compose up -d
+#  deploy:
+#    runs-on: ubuntu-latest
+#    needs: build_and_push
+#    steps:
+#      - name: clone code
+#        uses: actions/checkout@v2
+#      - name: render config
+#        run: |
+#          mkdir home_26_work_docker2
+#          cat docker-compose-ci.yaml | envsubst > home_26_work_docker2/docker-compose.yaml
+#      - name: copy files to server
+#        uses: appleboy/scp-action@master
+#        with:
+#          host: ${{ secrets.HOST }}
+#          username: ${{ secrets.USERNAME }}
+#          password: ${{ secrets.PASSWORD }}
+#          source: "home_26_work_docker2/docker-compose.yaml"
+#          target: "home_26_work_docker2"
+#          strip_components: 1
+#      - name: deploy app
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.HOST }}
+#          username: ${{ secrets.USERNAME }}
+#          password: ${{ secrets.PASSWORD }}
+#          script: |
+#            cd home_26_work_docker2
+#            echo ${{ secrets.PASSWORD }} | sudo -S docker-compose up -d
 
