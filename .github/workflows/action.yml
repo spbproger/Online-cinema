@@ -29,7 +29,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           source: "home_26_work_docker2/docker-compose.yaml"
-          target: "flask-app-docker"
+          target: "home_26_work_docker2"
           strip_components: 1
       - name: deploy app
         uses: appleboy/ssh-action@master
