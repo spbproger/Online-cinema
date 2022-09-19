@@ -5,6 +5,6 @@ services:
       build:
           context: .
       ports:
-        - 80:80
+        - 8080:80
 
 #image: standocker29/flask-app
