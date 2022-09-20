@@ -28,16 +28,16 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: "home_26_work_docker2/docker-compose.yaml"
+          source: "docker-compose.yaml"
           target: "home_26_work_docker2"
           strip_components: 1
-#      - name: deploy app
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{ secrets.HOST }}
-#          username: ${{ secrets.USERNAME }}
-#          password: ${{ secrets.PASSWORD }}
-##          script: |
-##            cd home_26_work_docker2
-##            echo ${{ secrets.PASSWORD }} | sudo -S docker-compose up -d
+      - name: deploy app
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd home_26_work_docker2
+            echo ${{ secrets.PASSWORD }} | sudo -S docker-compose up -d
 
