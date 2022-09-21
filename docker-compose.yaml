@@ -7,4 +7,3 @@ services:
       ports:
         - 8080:80
 
-#image: standocker29/flask-app
