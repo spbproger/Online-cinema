@@ -13,4 +13,4 @@ COPY implemented.py .
 COPY movies.db .
 COPY setup_db.py .
 
-CMD gunicorn run -h 0.0.0.0 -p 80
+CMD gunicorn run -h 0.0.0.0 -p 8000
