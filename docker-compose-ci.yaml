@@ -4,5 +4,5 @@ services:
   app:
     image: standocker29/hw_26:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     ports:
-      - 80:8000
+      - 90:8000
 
