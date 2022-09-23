@@ -5,5 +5,5 @@ services:
       build:
           dockerfile: Dockerfile
       ports:
-        - 80:8000
+        - 90:8000
 
